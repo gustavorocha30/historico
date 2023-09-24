@@ -1,0 +1,33 @@
+CREATE TABLE contas (
+    conta_id SERIAL PRIMARY KEY,
+    nome_usuario VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    senha VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE pedidos (
+    pedido_id SERIAL PRIMARY KEY,
+    conta_id INT REFERENCES contas(conta_id),
+    data_pedido DATE NOT NULL,
+    descricao TEXT,
+    conta_id INT REFERENCES contas(conta_id)
+    valor DECIMAL(10, 2)
+);
+
+
+INSERT INTO contas (nome_usuario, email, senha)
+VALUES ('lucas123', 'lucas@example.com', 'senha123');
+
+INSERT INTO contas (nome_usuario, email, senha)
+VALUES ('david456', 'david@example.com', 'senha456');
+
+
+INSERT INTO pedidos (conta_id, data_pedido, descricao, valor)
+VALUES (1, '2023-09-24', 'Pedido de chocolate', 100.00);
+
+INSERT INTO pedidos (conta_id, data_pedido, descricao, valor)
+VALUES (2, '2023-09-25', 'Pedido de chocolate', 150.00);
+
+
+
+
